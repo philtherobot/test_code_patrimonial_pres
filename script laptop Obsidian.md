@@ -12,11 +12,11 @@ C'est mercredi matin, la semaine est bien en route et votre prochaine feature av
 
 {histoire de 1er contact avec Gabriel}
 
-Quand j'ai proposé une présentation sur TDD, Gabriel, un des organisateurs du Meetup de ce soir, m'a aussitôt répondu avec, et je répète ici le sens seulement, pas les mots exacts "C'est très intéressant.  Il y a beaucoup de projets plus vieux que TDD et qui ont de la difficulté à intégrer TDD puisque le travail à faire est massif après que le projet soit lancé."
+Quand j'ai proposé une présentation sur TDD, Gabriel, un des organisateurs du Meetup de ce soir, m'a aussitôt répondu avec, et je répète ici le sens seulement, pas les mots exacts "C'est très intéressant.  Il y a beaucoup de projets plus vieux que TDD et qui ont de la difficulté à intégrer TDD puisque le travail à faire est massif après que le projet soit lancé."  
 
 (pause)
 
-Dans ma tête, mon plan quand j'ai proposé une présentation sur TDD était de présenter TDD comme tel, par le début.  On fait "test first".  Les tests sont unitaires, pas des tests d'intégration.  Le design du code.  Mais il est évident que pour la plupart des gens ici, nous travaillons sur un projet qui n'a pas de tests, qui n'a pas le design approprié pour le tester.  Mon vrai but est d'emmener la communité C++ à faire plus de tests unitaires.  La réalité est que les projets ne sont pas conçus pour cela.  J'ai donc aussitôt décidé de prendre la chose par l'autre côté.  Nous allons trouver comment injecter des tests dans vos projets.
+Dans ma tête, mon plan quand j'ai proposé une présentation sur TDD était de présenter TDD comme tel, par le début.  On fait "test first".  Les tests sont unitaires, pas des tests d'intégration.  Le design du code.  Mais il est évident que pour la plupart des gens ici, nous travaillons sur un projet qui n'a pas de tests, qui n'a pas le design approprié pour le tester.  Mon vrai but est d'emmener la communité C++ à faire plus de tests unitaires.  La réalité est que les projets ne sont pas conçus pour cela.  J'ai donc aussitôt décidé de prendre la chose par l'autre côté.  Nous allons trouver comment injecter des tests dans vos projets.  
 
 Ce ne sera pas facile.  Il vous faudra probablement commettre des crimes horribles dans votre code pour y parvenir.  En plus, honnêtement, je n'ai pas tellement d'expérience là dedans.  En fait, je n'ai fait que deux ou trois trucs du genre.  Je n'ai pas de réponses toutes faites pour votre situation particulière.  De toutes façons, je ne crois pas que quelqu'un ait une solution passe partout, pour tous les projets.
 
@@ -165,7 +165,7 @@ Nous pouvons donc simuler des conditions difficilement reproduisibles.
 
 {faudra que je cherche pour rendre ce matériel utilisable}
 
-Je voulais clarifier et travailler dans les signaux envoyés par Parameter.
+Je voulais clarifier et travailler dans les signaux envoyés par Parameter.  
 
 ```c++
 // ...
@@ -217,4 +217,4 @@ Nous pouvons donc parler ici de comment nous pourrions tester ce code en sépara
 ## Rebuts
 
 Intro abandonnée:
-Est-ce que vous aimez recevoir un ticket du groupe de test, concernant une feature que vous avez complété il y a deux semaines?  Vous êtes en plein dev d'une autre affaire, mais là il faut mettre ça sur pause pcq vous avez ce ticket?  Est-ce que aimez télécharger les fichiers nécessaires à la reproduction du bogue, lancer l'application, cliquer les boutons et naviguer les choix jusqu'à la reproduction?  Pour utiliser le déboggueur pour localiser le problème?
+  Est-ce que vous aimez recevoir un ticket du groupe de test, concernant une feature que vous avez complété il y a deux semaines?  Vous êtes en plein dev d'une autre affaire, mais là il faut mettre ça sur pause pcq vous avez ce ticket?  Est-ce que aimez télécharger les fichiers nécessaires à la reproduction du bogue, lancer l'application, cliquer les boutons et naviguer les choix jusqu'à la reproduction?  Pour utiliser le déboggueur pour localiser le problème?
