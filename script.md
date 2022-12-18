@@ -1,5 +1,6 @@
 échéancier
-| x | pts | #sems |
+
+| étape | pts | #sems |
 |--|--|--|
 | squelette | 1 | 1 |
 | texte complet et détaillé | 5 | 5 |
@@ -58,7 +59,7 @@ Mais aujourd'hui, je suis moi même bien infecté par TDD et j'ai beaucoup de bo
 
 {pour facilement s'assurer que la matrice de cas est toujours couverte}
 
-{pour pouvoir avoir un meilleur design plus flexible}
+{pour pouvoir avoir un meilleur design pls flexible}
 
 ## Commencer
 
@@ -68,7 +69,7 @@ Mais aujourd'hui, je suis moi même bien infecté par TDD et j'ai beaucoup de bo
 
 {choix d'une techno: Catch2 et Boost UnitTest. nous voulons une bonne intégration à votre environnement, des "matchers", nombre flottants, exception lancées (lancée, type et contenu), fixtures, préférablement un style par expression}
 
-{il vous faudra au moins une librairie!  Le code de test est lui-même un exécutable, alors si votre appli est monolithique, il sera difficile d'avoir accès aux fonctions.}
+{il vous faudra au moins une librairie de votre appli!  Le code de test est lui-même un exécutable, alors si votre appli est monolithique, il sera difficile d'avoir accès aux fonctions.}
 
 {facile: changez le projet de l'appli de "exécutable" à "librarie", votre appli est un main.cpp et appelle `mymain` dans votre nouvelle lib}
 
@@ -177,6 +178,15 @@ void valueChanged(bool newValue)
 void valueChanged(bool newValue, int index)
 ```
 
+J'ai la classe Parameter.  Elle utilise quelques morceaux externes:
+- 14 méthodes sur ConfObj
+- Expression::compile()
+- QTextStream Diag (logan.cpp)
+- generateError() (main.cpp)
+
+J'ai quelques méthodes que je voudrais désactiver.  Une technique serait de rendre des méthodes virtuelles et dériver de `Parameter` pour remplacer ces méthodes indésirables.
+
+
 Pour ce faire, il me fallait donc créer ces objets, qui eux-même requieraient des `ConfObj`, qui eux-mêmes avaient besoin de l'objet applicatif, `Logan`.
 
 ### Login
@@ -202,7 +212,7 @@ Nous pouvons donc parler ici de comment nous pourrions tester ce code en sépara
 ----------------------------------------------
 
 
-## Structure et technique de la prezze
+## Structure et technique de la pres
 
 {faut pas trop être détaillé, ce n'est pas à l'écrit, ce sera difficile si je pousse chaque point et détail jusqu'au bout.   Autrement dit, ne cherche pas la perfection, cherche l'idéal pour la situation}
 
