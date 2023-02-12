@@ -9,7 +9,17 @@
 
 ## Introduction
 
-C'est mercredi matin, la semaine est bien en route et votre prochaine feature avance bien.  Vous avez hâte de continuer.  Mais dans votre boîte de courriel se trouve une mauvaise nouvelle.  Assurance qualité vient de trouver un bogue avec votre feature de la semaine passée.  Vous allez devoir, un moment donné cette semaine, laisser votre travail ce côté.  Obtenir une branche *clean* dans un autre répertoire.  Télécharger les fichiers ou autres données qui sont en cause dans le ticket, compiler, lancer l'appli, suivre attentivement les étapes du repro, et observer le problème.  Débogguer.  Corriger (le bout le fun dans le fond). Se rendre compte qu'il y a deux autres endroits qui sont affectés et que vous seriez mieux de tester ça vous même avant de juste retourner ça en test.  Ou au moins expliquer à assurance qualité "by the way, faites ci et ça en plus durant les test pcq j'ai bidouillé ce coin là aussi".  
+One example of a software feature that is complex enough that automatic tests should be used to develop it is a financial transaction processing system.  The feature would require a lot of different validation rules, such as checking that the account has enough funds, that the credit card number is valid, that the transaction is within certain limits, and that the transaction is not a duplicate.
+
+-or-
+
+One example of a software feature with options and exceptions in the Microsoft Office Suite is the spell checker feature in Microsoft Word.
+
+-   Ignoring words in uppercase: This option allows the spell checker to ignore words that are in all uppercase, such as acronyms.
+-   Ignoring words with numbers: This option allows the spell checker to ignore words that contain numbers, such as "eBay" or "iPhone".
+-   Ignoring internet and file addresses: This option allows the spell checker to ignore web and file addresses, such as "[www.example.com](http://www.example.com)" or "C:\example\file.docx".
+-   Adding words to the custom dictionary: Users can add words that the spell checker flags as misspelled but are in fact spelled correctly, such as a specific technical term or a name of a person.
+-   Setting the language of the document: Users can set the language of the document, so the spell checker uses the correct dictionary and can identify correctly spelled words in different languages.
 
 (pause)
 

@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "script.md",
+                "file": "Points.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "script.md",
+                "file": "Points.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "script.md",
+                "file": "Points.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "script.md"
+                "file": "Points.md"
               }
             }
           }
@@ -146,6 +146,9 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "c0c9148f23478aaa",
-  "lastOpenFiles": []
+  "active": "7e3c5b6e1ddfeca2",
+  "lastOpenFiles": [
+    "script.md",
+    "Points.md"
+  ]
 }
