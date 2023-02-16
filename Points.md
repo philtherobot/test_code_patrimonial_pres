@@ -94,6 +94,22 @@ décider où placer le code de test
 
 ## Comment
 
+*Exemple vcpkg, parse_git_status_output (src/vcpkg/base/git.cpp)*
+
+prenons vcpkg, on trouve parse_git_status_output
+- analyse (parse) "git status"
+- entrée et sortie "simples"
+- plusieurs alternatives et cas
+
+Allons voir le test (src/vcpkg-test/git.parse.cpp)
+- on voit d'abord des entrées
+- teste "empty"
+- teste "good"
+- teste trois variantes de "bad"
+
+*Exemple vcpkg, git_status*
+
+
 fonction ou classe simple
 
 fonction qui a besoin ou créera de petits fichiers
