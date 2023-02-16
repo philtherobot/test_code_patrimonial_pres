@@ -76,23 +76,32 @@ choisir un framework de test
 - Boost Unittest
 - Catch2
 
-Catch2 parce que:
+Catch2 mon préféré
+- mais votre choix devrait avoir
 - support surprenant mais utile des "fixtures"
+	- fixture: souvent, plusieurs tests partagent la même préparation ou initialisation.  Un bon framework de test va structurer et faciliter la réutilisation de l'initialisation.
 - comparaisons des nombres flottants
+	- par epsilon
+	- par pourcentage
 - matchers - prédicat
+	- Starts with, contains etc
 - match exceptions, en détail
+- exclure/include les tests à exécuter
 
 intégrer au build system
+- les tests, c'est généralement un programme exécutable: targets
+- le plus simple: ajouter un répertoire "test" à la racine
+- si vous avez des modules, un rép "test" pour chaque
 
 intégrer l'exécution à votre cycle de développement
 - dans la Pull Request de GitHub
 - compilation durant la nuit
-- auto compilation sur la consignation
+- exécution à
+- la consignation
+- si manuel: ajouter au processus de livraison
 
-décider où placer le code de test
 
-
-## Comment
+## Exemples
 
 *Exemple vcpkg, parse_git_status_output (src/vcpkg/base/git.cpp)*
 
