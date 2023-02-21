@@ -103,27 +103,52 @@ intégrer l'exécution à votre cycle de développement
 
 ## Exemples
 
-*Exemple vcpkg, parse_git_status_output (src/vcpkg/base/git.cpp)*
+trouvé deux beaux exemples dans vcpkg
+- vcpkg parle git
+- git status --porcelain
+- parse_git_status_output, sortie, vector of GitStatusLine
 
-prenons vcpkg, on trouve parse_git_status_output
-- analyse (parse) "git status"
-- entrée et sortie "simples"
-- plusieurs alternatives et cas
+*Exemple vcpkg, parse_git_status_output [src/vcpkg/base/git.cpp](https://github.com/microsoft/vcpkg-tool/blob/b1ea41f0dbe82ee2e8e5437fd93d8ab0b52c2d6a/src/vcpkg/base/git.cpp#L49)*
 
-Allons voir le test (src/vcpkg-test/git.parse.cpp)
-- on voit d'abord des entrées
-- teste "empty"
-- teste "good"
-- teste trois variantes de "bad"
+(montrer src/vcpkg-test/git.parse.cpp)
+- les différentes entrées
+- test avec entrée vide
+- test avec bonne entrée et vérification
+- tests de mauvaises entrées
+
+cas le plus simple
+- pas d'interaction avec l'extérieur
+- simple à faire
+- couvre bien
+- possible grâce au design: l'exécution de git est séparée de l'analyse
 
 *Exemple vcpkg, git_status*
 
+--> prêt à faire la voix
 
-fonction ou classe simple
+(montrer git_status)
+- construit la ligne de commande
+- appelle cmd_execute_and_capture_output
+- traite erreur
 
-fonction qui a besoin ou créera de petits fichiers
+pour tester
+- il nous faudrait 
+	- un clone git
+	- git installé
+	- façon de produire une erreur exit != 0
+	- un problème au lancement (pas de git installé?)
 
-découpler pour entourer le code sous test d'interfaces
+il faut un simulacre
+- soit on ajoute un nouveau paramètre
+- soit une factory 
+	- en prod, le vrai objet
+	- en test, un objet injecté par le test
+	
+--> cont
+
+autres cas
+- fonction qui a besoin ou créera de petits fichiers, on y va directement si on veut
+- dériver et override les fonctions problématiques qui empêche les tests
 
 les interfaces du code sous test peut être
 - une classe avec des méthodes virtuelles
@@ -135,8 +160,28 @@ J'espère que cette présentation vous aidera à implanter des tests automatique
 
 Merci, bonne soirée
 
+
+---
+links
+https://www.jamesshore.com/v2/projects/nullables/testing-without-mocks
+
+---
+-utilité questionnable-
+
+## Quoi tester
+
+*brisé, pas encore préparé*
+il y a du code simple et du code complexe.
+il y a du code stable et du code constamment en évolution
+nous devrions prioriser complexe et en constante évolution
+*link [Prioritizing Technical Debt as If Time & Money Matters](https://www.youtube.com/watch?v=w9YhmMPLQ4U)*
+
 ----
 -utilité questionnable-
 
 il faudra peut être modulariser et réduire la taille des systèmes, pour éviter de faire plus ce qui s'appellerait un test d'intégration mais bien faire un test plus unitaire.
 
+---
+-utilité questionnable-
+
+[exemple 1](https://godbolt.org/z/8o8jETrjG)
