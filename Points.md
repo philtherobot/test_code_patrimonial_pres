@@ -124,8 +124,6 @@ cas le plus simple
 
 *Exemple vcpkg, git_status*
 
---> prêt à faire la voix
-
 (montrer git_status)
 - construit la ligne de commande
 - appelle cmd_execute_and_capture_output
@@ -138,23 +136,33 @@ pour tester
 	- façon de produire une erreur exit != 0
 	- un problème au lancement (pas de git installé?)
 
+(montrer le [setup](https://godbolt.org/z/xbjr1nePs))
 il faut un simulacre
 - soit on ajoute un nouveau paramètre
+- teste la ligne de commande capturée
+
+ (montrer les [alternatives](https://godbolt.org/z/fnc161fGP))
+- haute perf, template
 - soit une factory 
 	- en prod, le vrai objet
 	- en test, un objet injecté par le test
+- soit un enrobage
 	
---> cont
+autres cas, vous avez du legacy
 
-autres cas
 - fonction qui a besoin ou créera de petits fichiers, on y va directement si on veut
+
+- refactoriser la fonction afin de séparer l'écriture au fichier
+	- fonction interne produit une chaîne, celle que l'on teste
+	- fonction externe écrit la chaîne dans le fichier, non-testé
+
 - dériver et override les fonctions problématiques qui empêche les tests
 
-les interfaces du code sous test peut être
-- une classe avec des méthodes virtuelles
-- le code sous test peut être générique (template)
+legacy = soyez créatifs
 
 ## Conclusion
+
+tout cela trace le chemin fondamental jusqu'à un test utile
 
 J'espère que cette présentation vous aidera à implanter des tests automatiques dans votre projet
 
