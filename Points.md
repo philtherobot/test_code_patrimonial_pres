@@ -1,31 +1,45 @@
+
+https://www.canva.com/
+
 ## Intro
 
 me présenter
-- nom
+- Philippe Payant
 - C++ depuis 29 années
-- informatique mobile, télécom, serveurs de courriels, modélisation des transports, traitement de donnés radar-laser.
-
-présenter la présentation
-- parlera de tests automatiques, ceux qui font parti du projet, parti de l'étape de développement, pas ceux qu'on appelle "GUI test automation"
+- informatique mobile en 1995, 
+- télécom modem et radio début 2000
+- serveurs de courriels
+- modélisation des transports
+- traitement de donnés radar-laser
 
 motivation personelle, content et excité
 - changé ma façon de programmer pour le mieux
 - je désire partager cette expérience
+ 
+présenter la présentation
+- parlera de tests automatiques par les programmeurs
+- tests unitaires et intégration
+- versus "GUI test automation" par l'équipe AQ
+
 
 ## Plan
 
 mon plan pour vous...
-- Unitaire versus integration, les diffs
+- types de tests, unitaire, intégration, infrastructure, les diffs
 - Pourquoi?
 - les ingrédients de base pour commencer
 - Exemples
 
-## Unitaire versus intégration
+## Types de tests
 
 définition, se comprendre
-- AQ, manuel
-- intégration, demande infrastrucure externe ou lourd traitement
-- unitaire, une fonction ou classe à la fois, rapides
+- unitaire, 
+	- une fonction ou classe à la fois
+	- rapides
+	- peu ou pas de deps externes
+- intégration
+	- tout ou grande partie de l'appli
+	- lourd traitement?
 
 unitaire
 - si un test échoue, le code en cause est le code sous test
@@ -34,8 +48,13 @@ unitaire
 
 intégration
 - teste les interactions entre fonctions et classes
-- difficiles
 - peut être exécutés avant la livraison
+
+dépendances externes
+- processus externe, BD, serveur HTTP
+- fragilise l'exécution des tests et exige un montage (setup)
+- isolation et simulacre (mocking)
+
 
 ## Pourquoi des tests?
 
@@ -50,16 +69,16 @@ on peut améliorer le code sans peur
 
 auto documentation
 - en lisant, entrées -> sorties, corner cases
-- infaillible et complet
+- infaillible et complète
 - si vous changez le code, la docum devra suivre
 
-librairie de tierce partie
+changer deps
 - libre de changer, tester régression
 - même chose compilateur et plateforme
 
 pour pouvoir avoir un meilleur design plus flexible
-- briser les dépendances, sinom intestable
-- inversion des dépendances
+- doit isoler pour tester
+- souvent accompli par inversion des deps
 - code devient utilisable dans de nouveaux contextes
 
 permet de tester des situations difficiles à produire
@@ -78,35 +97,37 @@ choisir un framework de test
 
 Catch2 mon préféré
 - mais votre choix devrait avoir
-- support surprenant mais utile des "fixtures"
+- montures (fixtures)
 	- fixture: souvent, plusieurs tests partagent la même préparation ou initialisation.  Un bon framework de test va structurer et faciliter la réutilisation de l'initialisation.
 - comparaisons des nombres flottants
-	- par epsilon
-	- par pourcentage
+	- par epsilon relatif
+	- par distance absolue
+- comparaisons 
+	- vector
+	- pour type de vocabulaire de l'appli
 - matchers - prédicat
 	- Starts with, contains etc
 - match exceptions, en détail
 - exclure/include les tests à exécuter
 
 intégrer au build system
-- les tests, c'est généralement un programme exécutable: targets
+- les tests, c'est généralement un programme exécutable: cibles
 - le plus simple: ajouter un répertoire "test" à la racine
 - si vous avez des modules, un rép "test" pour chaque
 
 intégrer l'exécution à votre cycle de développement
-- dans la Pull Request de GitHub
+- difficile sans intégr continue
+- dans la Pull Request
 - compilation durant la nuit
-- exécution à
-- la consignation
-- si manuel: ajouter au processus de livraison
-
+- exécution à la consignation
+- sans intég continue, faites votre choix
 
 ## Exemples
 
 trouvé deux beaux exemples dans vcpkg
 - vcpkg parle git
 - git status --porcelain
-- parse_git_status_output, sortie, vector of GitStatusLine
+- parse_git_status_output analyse, vector of GitStatusLine en sortie
 
 *Exemple vcpkg, parse_git_status_output [src/vcpkg/base/git.cpp](https://github.com/microsoft/vcpkg-tool/blob/b1ea41f0dbe82ee2e8e5437fd93d8ab0b52c2d6a/src/vcpkg/base/git.cpp#L49)*
 
@@ -136,7 +157,7 @@ pour tester
 	- façon de produire une erreur exit != 0
 	- un problème au lancement (pas de git installé?)
 
-(montrer le [setup](https://godbolt.org/z/xbjr1nePs))
+(montrer la [structure du test](https://godbolt.org/z/xbjr1nePs))
 il faut un simulacre
 - soit on ajoute un nouveau paramètre
 - teste la ligne de commande capturée
@@ -146,11 +167,11 @@ il faut un simulacre
 - soit une factory 
 	- en prod, le vrai objet
 	- en test, un objet injecté par le test
-- soit un enrobage
-	
+
 autres cas, vous avez du legacy
 
-- fonction qui a besoin ou créera de petits fichiers, on y va directement si on veut
+- si facile d'utiliser un bac à sable
+	- on y va directement
 
 - refactoriser la fonction afin de séparer l'écriture au fichier
 	- fonction interne produit une chaîne, celle que l'on teste
@@ -162,11 +183,15 @@ legacy = soyez créatifs
 
 ## Conclusion
 
-tout cela trace le chemin fondamental jusqu'à un test utile
+"Nous avons maintenant parcouru le chemin vers les tests.  En partant des motivations fondamentales, aux outils, à l'intégration jusqu'à l'implantation de vos premiers tests.
 
-J'espère que cette présentation vous aidera à implanter des tests automatiques dans votre projet
+Tout ça est évidemment beaucoup de travail, de questions, de défis et de dérangements.  Mais n'oubliez pas les avantages des tests automatiques: moins de travail répétitif, plus grande liberté de changement, l'auto documentation, l'amélioration au design et tous les autres dont on a parlé.
 
-Merci, bonne soirée
+Si vous voulez faire le saut vers les tests automatiques, je vous souhaîte que l'opportunité se présente dans votre environnement de travail: que votre patron soit d'accord et que l'équipe embarque.
+
+En tous les cas, j'espère que cette présentation vous a plu qu'elle pourra vous aider à implanter des tests automatiques dans votre projet.
+
+Merci, bonne soirée!"
 
 
 ---
